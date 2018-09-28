@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b2h-sc-XpD"/>
+                        <viewControllerLayoutGuide type="bottom" id="6M6-Qw-b2q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVi-al-9Qm">
+                                <rect key="frame" x="172" y="629" width="31" height="30"/>
+                                <state key="normal" title="开始"/>
+                                <state key="selected" title="停止"/>
+                                <connections>
+                                    <action selector="onTapRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNm-JR-SX9"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8x8-Er-yP7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QdR-cI-c8G">
+                                <rect key="frame" x="8" y="617" width="359" height="2"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6M6-Qw-b2q" firstAttribute="top" secondItem="rVi-al-9Qm" secondAttribute="bottom" constant="8" id="06D-yN-RQ8"/>
+                            <constraint firstItem="rVi-al-9Qm" firstAttribute="top" secondItem="8x8-Er-yP7" secondAttribute="bottom" constant="30" id="2Nk-pb-V9G"/>
+                            <constraint firstItem="8x8-Er-yP7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4HT-cO-yY7"/>
+                            <constraint firstItem="QdR-cI-c8G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="JcY-Db-oF3"/>
+                            <constraint firstItem="rVi-al-9Qm" firstAttribute="top" secondItem="QdR-cI-c8G" secondAttribute="bottom" constant="10" id="Oab-56-P5O"/>
+                            <constraint firstAttribute="trailing" secondItem="8x8-Er-yP7" secondAttribute="trailing" id="ShX-vZ-LeZ"/>
+                            <constraint firstItem="8x8-Er-yP7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="WF2-6g-6pe"/>
+                            <constraint firstItem="rVi-al-9Qm" firstAttribute="top" secondItem="b2h-sc-XpD" secondAttribute="bottom" constant="609" id="kxw-h6-8uA"/>
+                            <constraint firstAttribute="trailing" secondItem="QdR-cI-c8G" secondAttribute="trailing" constant="8" id="n8g-l9-RJY"/>
+                            <constraint firstItem="rVi-al-9Qm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xwi-Ea-Cxi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="previewView" destination="8x8-Er-yP7" id="Z98-Wf-R7b"/>
+                        <outlet property="progressView" destination="QdR-cI-c8G" id="r1S-lA-SXM"/>
+                        <outlet property="recordButton" destination="rVi-al-9Qm" id="i6a-pV-hSW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="25.625" y="30.014999999999997"/>
+        </scene>
+    </scenes>
+</document>
