@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:/Users/cui/Documents/src/working/iOSDemo/Join/Join/cloud_ad.mp4">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/cui/Documents/src/working/iOSDemo/Join/Join/sample.mp4">
+   </FileRef>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>

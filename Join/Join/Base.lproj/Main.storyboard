@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PiU-Yb-1ln"/>
+                        <viewControllerLayoutGuide type="bottom" id="rzn-j2-tDD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaz-j5-C2C">
+                                <rect key="frame" x="172" y="627" width="31" height="30"/>
+                                <state key="normal" title="生成"/>
+                                <connections>
+                                    <action selector="onJoin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rRk-ve-s24"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cey-MW-dxB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Y9-FM-nge">
+                                <rect key="frame" x="16" y="617" width="343" height="2"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rzn-j2-tDD" firstAttribute="top" secondItem="uaz-j5-C2C" secondAttribute="bottom" constant="10" id="6qB-GN-vo3"/>
+                            <constraint firstItem="0Y9-FM-nge" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Jba-D3-h0j"/>
+                            <constraint firstItem="uaz-j5-C2C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KKA-s5-FtZ"/>
+                            <constraint firstItem="cey-MW-dxB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MqF-Du-S0h"/>
+                            <constraint firstItem="0Y9-FM-nge" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="UJA-BW-V1D"/>
+                            <constraint firstItem="uaz-j5-C2C" firstAttribute="top" secondItem="cey-MW-dxB" secondAttribute="bottom" constant="40" id="Uxa-DD-kH0"/>
+                            <constraint firstAttribute="trailing" secondItem="cey-MW-dxB" secondAttribute="trailing" id="f0h-lQ-8qJ"/>
+                            <constraint firstItem="uaz-j5-C2C" firstAttribute="top" secondItem="0Y9-FM-nge" secondAttribute="bottom" constant="8" id="je2-a5-9Rw"/>
+                            <constraint firstItem="cey-MW-dxB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="tJO-4U-9YX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="generateButton" destination="uaz-j5-C2C" id="n4q-ht-4PB"/>
+                        <outlet property="previewView" destination="cey-MW-dxB" id="vmC-fs-pam"/>
+                        <outlet property="progressView" destination="0Y9-FM-nge" id="VYc-Iu-imu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-519" y="39"/>
+        </scene>
+    </scenes>
+</document>
