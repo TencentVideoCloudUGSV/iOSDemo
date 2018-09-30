@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hhk-C9-HmN">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bIA-8I-UJO"/>
+                        <viewControllerLayoutGuide type="bottom" id="8bT-xX-XCF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vcr-aM-cFf">
+                                <rect key="frame" x="0.0" y="167" width="187.5" height="333"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Vcr-aM-cFf" secondAttribute="height" multiplier="9:16" id="Mzd-mu-vlC"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f12-he-gL1">
+                                <rect key="frame" x="187.5" y="167" width="187.5" height="333"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="f12-he-gL1" secondAttribute="height" multiplier="9:16" id="sAE-5U-naw"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHQ-b7-da5">
+                                <rect key="frame" x="162" y="580" width="51" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="开录">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zd8-pl-1i9"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="l8J-S8-416">
+                                <rect key="frame" x="0.0" y="518" width="375" height="2"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="l8J-S8-416" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0nK-5n-rsM"/>
+                            <constraint firstItem="sHQ-b7-da5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7iD-6N-zhx"/>
+                            <constraint firstItem="f12-he-gL1" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="8SV-H6-HMT"/>
+                            <constraint firstItem="Vcr-aM-cFf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HBd-Xz-dA1"/>
+                            <constraint firstAttribute="trailing" secondItem="l8J-S8-416" secondAttribute="trailing" id="WQA-It-c3J"/>
+                            <constraint firstItem="Vcr-aM-cFf" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="Xbr-Fx-aLH"/>
+                            <constraint firstItem="8bT-xX-XCF" firstAttribute="top" secondItem="sHQ-b7-da5" secondAttribute="bottom" constant="45" id="Y4d-rO-rTY"/>
+                            <constraint firstItem="f12-he-gL1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="c2x-lN-Hil"/>
+                            <constraint firstItem="l8J-S8-416" firstAttribute="top" secondItem="f12-he-gL1" secondAttribute="bottom" constant="18" id="gGB-mE-gXV"/>
+                            <constraint firstAttribute="trailing" secondItem="f12-he-gL1" secondAttribute="trailing" id="pUt-8O-BUX"/>
+                            <constraint firstItem="Vcr-aM-cFf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wRE-Hz-JpT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="EMU-eX-Dnv"/>
+                    <connections>
+                        <outlet property="cameraView" destination="Vcr-aM-cFf" id="qoz-59-UC0"/>
+                        <outlet property="movieView" destination="f12-he-gL1" id="22q-RM-2O2"/>
+                        <outlet property="progressView" destination="l8J-S8-416" id="enK-m0-EMa"/>
+                        <outlet property="recordButton" destination="sHQ-b7-da5" id="bYJ-bq-gvA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1447" y="-10"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MFH-Yw-MO2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hhk-C9-HmN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1rw-aw-8Qk">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WWY-f1-nEi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZkZ-Be-Ryq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="628" y="-10.344827586206897"/>
+        </scene>
+    </scenes>
+</document>

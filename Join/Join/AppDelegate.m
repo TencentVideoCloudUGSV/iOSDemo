@@ -17,7 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [TXUGCBase setLicenceURL:@"" key:@""];
+    [TXUGCBase setLicenceURL:@"https://xiaoshipin-1251610319.cos.ap-chengdu.myqcloud.com/Join.license" key:@"9bc74ac7bfd07ea392e8fdff2ba5678a"];
     return YES;
 }
 
