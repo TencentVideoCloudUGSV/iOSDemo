@@ -36,8 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // 这里随便找了段视频放到了工程里
+    // 这里找一段mp4视频放到了工程里，或者用手机录制的mov格式视频也可以
     NSString *mp4Path = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"mp4"];
     _videoInfo = [TXVideoInfoReader getVideoInfo:mp4Path];
     TXAudioSampleRate audioSampleRate = AUDIO_SAMPLERATE_48000;
@@ -57,7 +56,6 @@
     _recordPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"record.mp4"];
     _resultPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"result.mp4"];
     
-    
     // 播放器初始化
     TXPreviewParam *param = [[TXPreviewParam alloc] init];
     param.videoView = self.movieView;
@@ -69,8 +67,11 @@
     // 录像参数初始化
     _recorder = [TXUGCRecord shareInstance];
     TXUGCCustomConfig *recordConfig = [[TXUGCCustomConfig alloc] init];
-    recordConfig.videoResolution = VIDEO_RESOLUTION_360_640;
-    recordConfig.videoFPS = _videoInfo.fps;
+    recordConfig.videoResolution = VIDEO_RESOLUTION_720_1280;
+    //这里保证录制视频的帧率和合唱视频的帧率一致，否则可能出现音画不同步的现象
+    //注意：这里获取的合唱视频的帧率是平均帧率，有可能为小数，做一下四舍五入操作
+    recordConfig.videoFPS = (int)(_videoInfo.fps + 0.5);
+    //这里保证录制视频的音频采样率和合唱视频的音频采样率一致，否则可能出现音画不同步的现象
     recordConfig.audioSampleRate = audioSampleRate;
     recordConfig.videoBitratePIN = 9600;
     recordConfig.maxDuration = _videoInfo.duration;
@@ -86,12 +87,14 @@
 }
 
 - (IBAction)onTapButton:(UIButton *)sender {
-    [_editor startPlayFromTime:0 toTime:_videoInfo.duration];
-    if ([_recorder startRecord:_recordPath coverPath:[_recordPath stringByAppendingString:@".png"]] != 0) {
-        NSLog(@"相机启动失败");
+    int ret = [_recorder startRecord:_recordPath coverPath:[_recordPath stringByAppendingString:@".png"]];
+    if (ret != 0) {
+        NSLog(@"相机启动失败, 错误码: %d", ret);
+    } else {
+        [_editor startPlayFromTime:0 toTime:_videoInfo.duration];
+        [sender setTitle:@"录像中" forState:UIControlStateNormal];
+        sender.enabled = NO;
     }
-    [sender setTitle:@"录像中" forState:UIControlStateNormal];
-    sender.enabled = NO;
 }
 
 #pragma mark TXVideoPreviewListener
@@ -103,30 +106,17 @@
 #pragma mark TXUGCRecordListener
 -(void)onRecordComplete:(TXUGCRecordResult*)result;
 {
-    NSLog(@"👍录制完成，开始合成");
+    NSLog(@"录制完成，开始合成");
     [self.recordButton setTitle:@"合成中..." forState:UIControlStateNormal];
     
-    //设置录制视频在输出文件中的宽高
-    CGFloat width = 720;
-    CGFloat height = 1280;
-    
+    //获取录制视频的宽高
     TXVideoInfo *videoInfo = [TXVideoInfoReader getVideoInfo:_recordPath];
-    CGFloat w = videoInfo.width;
-    CGFloat h = videoInfo.height;
-    CGSize _size = CGSizeMake(w, h);
+    CGFloat width = videoInfo.width;
+    CGFloat height = videoInfo.height;
     
-    CGRect recordScreen = CGRectMake(0, 0, width, height);
-    //播放视频所占画布的大小这里要计算下，防止视频拉伸
-    CGRect playScreen = CGRectZero;
-    if (_size.height / _size.width >= height / width) {
-        CGFloat playScreen_w = height * _size.width / _size.height;
-        playScreen = CGRectMake(width + (width - playScreen_w) / 2.0, 0, playScreen_w, height);
-    }else{
-        CGFloat playScreen_h = width * _size.height / _size.width;
-        playScreen = CGRectMake(width, (height - playScreen_h) / 2.0, width, playScreen_h);
-    }
-
     //录制视频和原视频左右排列
+    CGRect recordScreen = CGRectMake(0, 0, width, height);
+    CGRect playScreen = CGRectMake(width, 0, width, height);
     [_joiner setSplitScreenList:@[[NSValue valueWithCGRect:recordScreen],[NSValue valueWithCGRect:playScreen]] canvasWidth:width * 2 canvasHeight:height];
     [_joiner splitJoinVideo:VIDEO_COMPRESSED_720P videoOutputPath:_resultPath];
 }
@@ -141,6 +131,7 @@
 -(void) onJoinComplete:(TXJoinerResult *)result
 {
     NSLog(@"视频合成完毕");
+    [_recorder stopCameraPreview];
     VideoPreviewController *controller = [[VideoPreviewController alloc] initWithVideoPath:_resultPath];
     [self.navigationController pushViewController:controller animated:YES];
 }
